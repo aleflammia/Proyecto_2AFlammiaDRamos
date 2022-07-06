@@ -1,8 +1,10 @@
 package Logico;
 
+import java.io.Serializable;
+
 /**
- *
- * @author Diego
+ * 
+ * @author Alessandro
  */
 
 /* 
@@ -11,7 +13,9 @@ package Logico;
  forma iterarlos.
 */
 
-public class NodoArticulo {
+public class NodoArticulo implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     private String key; //Texto que se utilizará para generar el codigo hash
     private Articulo info; //Contenido del articulo
     private NodoArticulo siguiente; //Referencia al siguiente articulo

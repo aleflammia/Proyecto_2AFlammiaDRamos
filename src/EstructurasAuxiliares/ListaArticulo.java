@@ -1,15 +1,16 @@
 package EstructurasAuxiliares;
 
-/**
- *
- * @author Alessandro
- */
-
 import Logico.Articulo;
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class ListaArticulo {
+/**
+ * 
+ * @author Alessandro
+ */
+public class ListaArticulo implements Serializable{
     
+    private static final long serialVersionUID = 1L;
     private Articulo[] arreglo; //El arreglo que se estará expandiendo
     private int capacidad; //La capacidad actual del arreglo
     private int cont; //Este contador ayudará de manera auxliar a aumentar la capacidad del arreglo

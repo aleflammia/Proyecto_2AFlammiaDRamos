@@ -1,14 +1,15 @@
 package EstructurasAuxiliares;
 
-/**
- *
- * @author Diego
- */
-
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class ListaString {
+/**
+ * 
+ * @author Alessandro
+ */
+public class ListaString implements Serializable{
     
+    private static final long serialVersionUID = 1L;
     private String[] arreglo; //El arreglo que se estará expandiendo
     private int capacidad; //La capacidad actual del arreglo
     private int cont; //Este contador ayudará de manera auxliar a aumentar la capacidad del arreglo

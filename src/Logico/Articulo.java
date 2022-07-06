@@ -1,13 +1,16 @@
 package Logico;
 
 import EstructurasAuxiliares.ListaString;
+import java.io.Serializable;
 
 /**
- *
+ * 
  * @author Alessandro
  */
 
-public class Articulo {
+public class Articulo implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     private String titulo;   //Titulo del articulo
     private ListaString autores; //Lista de Autores
     private String cuerpoResumen; //Cuerpo del resumen

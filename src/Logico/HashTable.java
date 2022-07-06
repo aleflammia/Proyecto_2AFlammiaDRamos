@@ -1,22 +1,27 @@
 package Logico;
 
-/**
- *
- * @author Diego
- */
-public class HashTable {
+import EstructurasAuxiliares.ListaArticulo;
+import java.io.Serializable;
 
+/**
+ * 
+ * @author Alessandro
+ */
+
+public class HashTable implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     private NodoArticulo[] tabla; //Se crea la lista de NodoArticulo que será la HashTable
     private int cont; //Capacidad de la tabla
     
     //Constructor
     public HashTable(){
-        //Se inicializa la tabla con 43, debido a que es un número primero y evita más las colisiones
+        //Se inicializa la tabla con 43, debido a que es un número primo y evita más las colisiones
         tabla = new NodoArticulo[43];
     }
     
     /*
-     La función "Insertar" agrega un nuevo articulo a la tabla hash, siempre evualuando
+     La función "Insertar" agregar un nuevo articulo a la tabla hash, siempre evualuando
      si exise una colisión y de paso, si la tabla de hash tiene más del 75% de su 
      espacio ocupado, pues este se ampliará mediante la función "resize"
     */ 
@@ -55,6 +60,9 @@ public class HashTable {
      por su posición en la oración. Esta función Hash 
      casi no genera colisiones. Lo cuál resulta muy efecivo.
     */
+    
+    //A*1m*2o*3r
+    //roma
     private int hash(String key) {
         int hash = 0;
         for (int i = 0; i < key.length(); i++) {
@@ -148,4 +156,37 @@ public class HashTable {
     public int getSize(){
         return cont;
     }
+    
+    /*
+     La función "existe" prueba si la clave especificada tiene un valor asociado a
+     la tabla, en pocas valabras, verifica si un elemento ya existe dentro de la tabla
+    */
+    public boolean existe(String key) {
+        int posicion = hash(key) % tabla.length;
+        
+        NodoArticulo lista = tabla[posicion];
+        while (lista != null) {            
+            if (lista.getKey().equals(key)) {
+                return true;
+            }
+            lista = lista.getSiguiente();
+        }
+        return false;
+    }
+    
+    /*
+     Esta función devuelve la lista de articulos (elementos) que contiene la tabla
+     de Hash. Es util ya que fuera de la clase evita hacer iteraciones extra.
+    */ 
+    public ListaArticulo obtenerArticulos() {
+        ListaArticulo articulos = new ListaArticulo();
+        for (NodoArticulo nodoArticulo : tabla) {
+            while (nodoArticulo != null) {  
+                articulos.agregar(nodoArticulo.getInfo());
+                nodoArticulo = nodoArticulo.getSiguiente();
+            }
+        }
+        return articulos;
+    }
+    
 }
